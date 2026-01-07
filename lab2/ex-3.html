@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Task Manager</title>
+<style>
+body{
+  font-family:Arial;
+  background:#eef2f7;
+  padding:20px;
+}
+input,button{
+  padding:8px;
+}
+.board{
+  display:flex;
+  gap:15px;
+  margin-top:20px;
+}
+.column{
+  flex:1;
+  background:#fff;
+  border-radius:10px;
+  padding:10px;
+  min-height:300px;
+  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+.task{
+  background:#dfe6e9;
+  padding:8px;
+  margin:5px 0;
+  border-radius:5px;
+  cursor:grab;
+}
+</style>
+</head>
+<body>
+
+<h2>📋 Task Manager</h2>
+<input id="task">
+<button onclick="add()">Add Task</button>
+
+<div class="board">
+<div class="column" id="todo" ondragover="allow(event)" ondrop="drop(event)">
+<h3>To Do</h3></div>
+
+<div class="column" id="prog" ondragover="allow(event)" ondrop="drop(event)">
+<h3>In Progress</h3></div>
+
+<div class="column" id="done" ondragover="allow(event)" ondrop="drop(event)">
+<h3>Completed</h3></div>
+</div>
+
+<script>
+let i=0;
+function add(){
+ if(!task.value)return;
+ let d=document.createElement("div");
+ d.className="task";
+ d.id="t"+i++;
+ d.draggable=true;
+ d.ondragstart=e=>e.dataTransfer.setData("id",d.id);
+ d.innerText=task.value+" ("+new Date().toLocaleDateString()+")";
+ todo.appendChild(d);
+ task.value="";
+}
+function allow(e){e.preventDefault();}
+function drop(e){
+ e.preventDefault();
+ let t=document.getElementById(e.dataTransfer.getData("id"));
+ e.target.appendChild(t);
+ if(e.target.id==="done"){
+  t.style.background="#b8f7b1";
+  alert("Task Completed Successfully");
+ }
+}
+</script>
+
+</body>
+</html>

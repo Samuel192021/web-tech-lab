@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>User Management</title>
+<style>
+body{
+  font-family:Arial;
+  background:#f1f2f6;
+  padding:20px;
+}
+.box{
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  max-width:500px;
+  margin:auto;
+  box-shadow:0 10px 25px rgba(0,0,0,0.2);
+}
+input,button{
+  width:100%;
+  padding:8px;
+  margin:5px 0;
+}
+table{
+  width:100%;
+  margin-top:15px;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+<h2>User Registration</h2>
+
+<input id="name" placeholder="Name">
+<input id="email" placeholder="Email">
+<input id="mobile" placeholder="Mobile">
+<input id="password" type="password" placeholder="Password">
+
+<button onclick="add()">Register</button>
+<button onclick="clearAll()">Clear All</button>
+
+<table border="1">
+<tr><th>Name</th><th>Email</th><th>Mobile</th><th>Action</th></tr>
+<tbody id="users"></tbody>
+</table>
+</div>
+
+<script>
+function get(){return JSON.parse(localStorage.getItem("u"))||[]}
+
+function add(){
+ if(!name.value||!email.value||!mobile.value||!password.value)
+  return alert("All fields required");
+ if(mobile.value.length!=10) return alert("Mobile must be 10 digits");
+ if(password.value.length<6) return alert("Min 6 chars");
+
+ let u=get();
+ if(u.some(x=>x.email==email.value)) return alert("Email exists");
+
+ u.push({name:name.value,email:email.value,mobile:mobile.value});
+ localStorage.setItem("u",JSON.stringify(u));
+ show();
+}
+
+function show(){
+ users.innerHTML="";
+ get().forEach((x,i)=>{
+ users.innerHTML+=`
+ <tr>
+ <td>${x.name}</td>
+ <td>${x.email}</td>
+ <td>${x.mobile}</td>
+ <td><button onclick="del(${i})">Delete</button></td>
+ </tr>`;
+ });
+}
+function del(i){
+ let u=get();
+ u.splice(i,1);
+ localStorage.setItem("u",JSON.stringify(u));
+ show();
+}
+function clearAll(){
+ localStorage.clear();
+ show();
+}
+show();
+</script>
+
+</body>
+</html>
