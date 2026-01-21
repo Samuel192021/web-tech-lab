@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exercise 4 - User Activity Monitor</title>
+
+  <link rel="stylesheet" href="exercise4.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">🕵️</div>
+      <div>
+        <h1>ActivityWatch</h1>
+        <p>Real-time clicks • keys • focus • bubbling + capturing</p>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="chip" id="statusChip">Monitoring ✅</div>
+      <button class="btn btn-ghost" id="pauseBtn">Pause</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- LEFT PANEL -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Interactive Area</h2>
+        <p>Do clicks / typing / focus changes here. Events are logged instantly.</p>
+      </div>
+
+      <div class="playground" id="playground">
+        <div class="grid">
+          <button class="card-btn">Button A</button>
+          <button class="card-btn">Button B</button>
+
+          <div class="input-card">
+            <label>Type Something</label>
+            <input type="text" placeholder="Try typing fast..." />
+          </div>
+
+          <div class="input-card">
+            <label>Email</label>
+            <input type="email" placeholder="Focus here and switch..." />
+          </div>
+
+          <div class="select-card">
+            <label>Select Option</label>
+            <select>
+              <option value="">Choose</option>
+              <option>Option 1</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
+            </select>
+          </div>
+
+          <div class="box" id="box">
+            <h3>Bubble + Capture Box</h3>
+            <p>Click inside this nested box to see capturing + bubbling order.</p>
+
+            <div class="inner-box" id="innerBox">
+              Inner Box (click me)
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mini">
+        <div class="mini-card">
+          <h3>Tip</h3>
+          <p>Capturing logs first, bubbling logs after. Focus events are captured too.</p>
+        </div>
+        <div class="mini-card warn" id="warnBox">
+          <h3>Warnings</h3>
+          <p id="warnText">No suspicious activity detected.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT PANEL -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Activity Log</h2>
+        <p>Stored as array of objects + displayed dynamically using DOM.</p>
+      </div>
+
+      <div class="log-toolbar">
+        <div class="stats">
+          <div class="stat">
+            <span>Total Events</span>
+            <b id="totalEvents">0</b>
+          </div>
+          <div class="stat">
+            <span>Clicks</span>
+            <b id="clickCount">0</b>
+          </div>
+          <div class="stat">
+            <span>Keys</span>
+            <b id="keyCount">0</b>
+          </div>
+          <div class="stat">
+            <span>Focus</span>
+            <b id="focusCount">0</b>
+          </div>
+        </div>
+
+        <div class="toolbar-btns">
+          <button class="btn btn-ghost" id="resetBtn">Reset</button>
+          <button class="btn btn-primary" id="exportBtn">Export Log</button>
+        </div>
+      </div>
+
+      <div class="log-area">
+        <div class="filter-row">
+          <input type="text" id="searchInput" placeholder="Search event type / element / key..." />
+          <select id="typeFilter">
+            <option value="ALL">All Types</option>
+            <option value="click">Click</option>
+            <option value="keydown">Key Press</option>
+            <option value="focusin">Focus</option>
+            <option value="focusout">Blur</option>
+          </select>
+        </div>
+
+        <div id="logList" class="log-list"></div>
+
+        <div id="emptyLog" class="empty">
+          <div class="empty-icon">📜</div>
+          <h3>No events yet</h3>
+          <p>Interact with the left panel to generate logs.</p>
+        </div>
+      </div>
+
+      <div class="export-box" id="exportBox">
+        <div class="export-head">
+          <h3>Exported Log (Formatted Text)</h3>
+          <button class="btn btn-ghost mini" id="copyBtn">Copy</button>
+        </div>
+        <textarea id="exportText" readonly></textarea>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Exercise 4 • User Activity Monitor • Event Capture + Bubble • DOM Log</p>
+  </footer>
+
+  <script src="exercise4.js"></script>
+</body>
+</html>

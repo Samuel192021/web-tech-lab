@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exercise 1 - Adaptive Registration</title>
+
+  <link rel="stylesheet" href="exercise1.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">🧾</div>
+      <div>
+        <h1>Adaptive Registration</h1>
+        <p>Dynamic Validation Rules • Role Based Form</p>
+      </div>
+    </div>
+
+    <div class="chip" id="roleChip">Role: Student</div>
+  </header>
+
+  <main class="wrap">
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Registration Form</h2>
+        <p>Validation changes based on role (Student / Teacher / Admin)</p>
+      </div>
+
+      <form id="regForm" class="form" novalidate>
+
+        <div class="grid">
+          <!-- Name -->
+          <div class="field">
+            <label>Full Name <span class="req">*</span></label>
+            <input type="text" id="name" placeholder="Ex: Samuel G" />
+            <div class="err" id="name_err"></div>
+          </div>
+
+          <!-- Age -->
+          <div class="field">
+            <label>Age <span class="req">*</span></label>
+            <input type="number" id="age" placeholder="Ex: 20" />
+            <div class="err" id="age_err"></div>
+          </div>
+
+          <!-- Email -->
+          <div class="field span2">
+            <label>Email <span class="req">*</span></label>
+            <input type="email" id="email" placeholder="Ex: samuel@student.edu" />
+            <div class="helper" id="emailHelp">Domain rules depend on role.</div>
+            <div class="err" id="email_err"></div>
+          </div>
+
+          <!-- Role -->
+          <div class="field span2">
+            <label>Select Role <span class="req">*</span></label>
+            <select id="role">
+              <option value="Student" selected>Student</option>
+              <option value="Teacher">Teacher</option>
+              <option value="Admin">Admin</option>
+            </select>
+            <div class="err" id="role_err"></div>
+          </div>
+
+          <!-- Password -->
+          <div class="field">
+            <label>Password <span class="req">*</span></label>
+            <input type="password" id="password" placeholder="Create password" />
+            <div class="meter">
+              <div class="bar"><div class="fill" id="passFill"></div></div>
+              <span id="passStrength">Strength: -</span>
+            </div>
+            <div class="helper" id="passRules"></div>
+            <div class="err" id="password_err"></div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="field">
+            <label>Confirm Password <span class="req">*</span></label>
+            <input type="password" id="confirmPassword" placeholder="Re-enter password" />
+            <div class="err" id="confirmPassword_err"></div>
+          </div>
+
+          <!-- Skills -->
+          <div class="field span2" id="skillsBlock">
+            <label>Skills <span class="req">*</span></label>
+            <input type="text" id="skills" placeholder="Ex: Java, HTML, Leadership" />
+            <div class="helper" id="skillsHelp">Skills requirement depends on role.</div>
+            <div class="err" id="skills_err"></div>
+          </div>
+
+          <!-- Teacher extra -->
+          <div class="field span2 hidden" id="teacherBlock">
+            <label>Teaching Subject <span class="req">*</span></label>
+            <input type="text" id="subject" placeholder="Ex: Mathematics" />
+            <div class="err" id="subject_err"></div>
+          </div>
+
+          <!-- Admin extra -->
+          <div class="field span2 hidden" id="adminBlock">
+            <label>Admin Secret Code <span class="req">*</span></label>
+            <input type="text" id="adminCode" placeholder="Ex: ADM-2026" />
+            <div class="helper">Format: ADM-XXXX (XXXX = 4 digits)</div>
+            <div class="err" id="adminCode_err"></div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn btn-ghost" id="resetBtn">Reset</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Register ✅</button>
+        </div>
+
+        <div class="result" id="resultBox"></div>
+
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Exercise 1 • Adaptive Registration System • Dynamic Validation Rules</p>
+  </footer>
+
+  <script src="exercise1.js"></script>
+</body>
+</html>

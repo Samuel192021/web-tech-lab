@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exercise 2 - Intelligent Shopping Cart</title>
+
+  <link rel="stylesheet" href="exercise2.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">🛒</div>
+      <div>
+        <h1>SmartCart</h1>
+        <p>Rule-Driven Discounts • Real-time UI</p>
+      </div>
+    </div>
+
+    <div class="timebox">
+      <div class="chip" id="timeChip">Checking time...</div>
+      <div class="chip chip-outline" id="dayChip">Loading...</div>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- PRODUCTS -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Available Products</h2>
+        <p>Select items and add them to cart</p>
+      </div>
+
+      <div class="products" id="productGrid"></div>
+    </section>
+
+    <!-- CART -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Your Cart</h2>
+        <p>Update quantity • remove items • apply coupons</p>
+      </div>
+
+      <div class="cart-wrap">
+        <div id="emptyCart" class="empty">
+          <div class="empty-icon">🧾</div>
+          <h3>Your cart is empty</h3>
+          <p>Add products from the left to begin.</p>
+        </div>
+
+        <div id="cartList" class="cart-list"></div>
+
+        <!-- Coupon and Summary -->
+        <div class="coupon-box">
+          <div class="coupon-row">
+            <input
+              type="text"
+              id="couponInput"
+              placeholder="Enter coupon code (ex: SAVE10, FOOD5, WELCOME15)"
+              autocomplete="off"
+            />
+            <button id="applyCouponBtn" class="btn btn-primary">Apply</button>
+          </div>
+          <div class="coupon-help">
+            <span class="tag">String Validation Used ✅</span>
+            <span class="tag">Multiple Discounts ✅</span>
+            <span class="tag">Real-time Update ✅</span>
+          </div>
+          <div id="couponMsg" class="coupon-msg"></div>
+        </div>
+
+        <div class="summary">
+          <div class="sum-row">
+            <span>Subtotal</span>
+            <b id="subtotal">₹0</b>
+          </div>
+
+          <div class="discounts" id="discountDetails"></div>
+
+          <div class="sum-row total">
+            <span>Total Payable</span>
+            <b id="total">₹0</b>
+          </div>
+
+          <div class="actions">
+            <button id="clearCartBtn" class="btn btn-ghost">Clear Cart</button>
+            <button id="checkoutBtn" class="btn btn-success">Checkout</button>
+          </div>
+
+          <p class="note">
+            Discounts Applied: Bulk + Category + Time + Coupon (if valid).
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Exercise 2 • Intelligent Shopping Cart • Built using HTML + CSS + JavaScript</p>
+  </footer>
+
+  <script src="exercise2.js"></script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exercise 3 - Dynamic Survey Builder</title>
+
+  <link rel="stylesheet" href="exercise3.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">🧠</div>
+      <div>
+        <h1>SurveyCraft</h1>
+        <p>DOM-Generated Survey Builder • Smart Validation</p>
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="chip" id="liveStatus">Ready ✅</div>
+      <button class="btn btn-ghost" id="resetBtn">Reset</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <!-- LEFT: info panel -->
+    <section class="panel info">
+      <div class="panel-head">
+        <h2>Survey Preview</h2>
+        <p>This form is generated dynamically using JavaScript DOM.</p>
+      </div>
+
+      <div class="info-body">
+        <div class="progress-wrap">
+          <div class="progress-title">
+            <span>Progress</span>
+            <b id="progressText">0%</b>
+          </div>
+          <div class="bar">
+            <div class="fill" id="progressFill"></div>
+          </div>
+          <p class="small">
+            Validation is live. Submission is blocked until all answers pass ✅
+          </p>
+        </div>
+
+        <div class="tips">
+          <h3>Rules Included</h3>
+          <ul>
+            <li>Required field check ✅</li>
+            <li>Text min/max character limit ✅</li>
+            <li>Radio required ✅</li>
+            <li>Checkbox min/max selection ✅</li>
+            <li>Inline error messages ✅</li>
+            <li>Prevents submit until valid ✅</li>
+            <li>Auto-save responses ✅</li>
+          </ul>
+        </div>
+
+        <div class="mini-card">
+          <h3>Extra Feature 🚀</h3>
+          <p>
+            Your responses are saved automatically in <b>localStorage</b>,
+            so even after refresh, answers remain.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- RIGHT: Survey Form -->
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Dynamic Survey Form</h2>
+        <p>Fill the responses. Errors appear inline.</p>
+      </div>
+
+      <form id="surveyForm" class="form">
+        <div id="formFields"></div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-ghost" id="saveBtn">Save Draft</button>
+          <button type="submit" class="btn btn-primary" id="submitBtn">Submit Survey</button>
+        </div>
+
+        <div class="result" id="resultBox"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Exercise 3 • Dynamic Survey Builder • HTML + CSS + JS (DOM)</p>
+  </footer>
+
+  <script src="exercise3.js"></script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Exercise 5 - Multi-Stage Form Workflow</title>
+
+  <link rel="stylesheet" href="exercise5.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">🧩</div>
+      <div>
+        <h1>FormFlow Engine</h1>
+        <p>4-stage workflow • strict validation • progress tracking</p>
+      </div>
+    </div>
+
+    <div class="chip" id="statusChip">Stage 1 of 4</div>
+  </header>
+
+  <main class="wrap">
+    <section class="panel">
+      <div class="panel-head">
+        <h2>Multi-Stage Client-Side Form</h2>
+        <p>Navigation is locked until validation passes for each stage ✅</p>
+      </div>
+
+      <!-- Progress -->
+      <div class="progress-wrap">
+        <div class="steps" id="stepsUI"></div>
+
+        <div class="bar">
+          <div class="fill" id="progressFill"></div>
+        </div>
+
+        <div class="progress-meta">
+          <span id="progressText">0% Completed</span>
+          <span class="muted">Auto-validated per stage</span>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <form id="multiForm" class="form">
+
+        <!-- STAGE 1 -->
+        <div class="stage" id="stage1">
+          <h3>Stage 1: Personal Details</h3>
+          <p class="desc">Basic user details (required + format validation).</p>
+
+          <div class="grid">
+            <div class="field">
+              <label>Full Name <span class="req">*</span></label>
+              <input type="text" id="fullName" placeholder="Ex: Samuel G" />
+              <div class="err" id="fullName_err"></div>
+            </div>
+
+            <div class="field">
+              <label>Email <span class="req">*</span></label>
+              <input type="email" id="email" placeholder="Ex: samuel@gmail.com" />
+              <div class="err" id="email_err"></div>
+            </div>
+
+            <div class="field">
+              <label>Phone Number <span class="req">*</span></label>
+              <input type="text" id="phone" placeholder="10 digit number" />
+              <div class="err" id="phone_err"></div>
+            </div>
+
+            <div class="field">
+              <label>Age <span class="req">*</span></label>
+              <input type="number" id="age" placeholder="18 - 60" />
+              <div class="err" id="age_err"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STAGE 2 -->
+        <div class="stage" id="stage2">
+          <h3>Stage 2: Address & Identity</h3>
+          <p class="desc">Strict rules: PIN format + ID length check.</p>
+
+          <div class="grid">
+            <div class="field">
+              <label>City <span class="req">*</span></label>
+              <input type="text" id="city" placeholder="Ex: Chennai" />
+              <div class="err" id="city_err"></div>
+            </div>
+
+            <div class="field">
+              <label>State <span class="req">*</span></label>
+              <input type="text" id="state" placeholder="Ex: Tamil Nadu" />
+              <div class="err" id="state_err"></div>
+            </div>
+
+            <div class="field">
+              <label>PIN Code <span class="req">*</span></label>
+              <input type="text" id="pincode" placeholder="6 digit PIN code" />
+              <div class="err" id="pincode_err"></div>
+            </div>
+
+            <div class="field">
+              <label>ID Proof <span class="req">*</span></label>
+              <select id="idType">
+                <option value="">Select</option>
+                <option value="Aadhar">Aadhar</option>
+                <option value="PAN">PAN</option>
+                <option value="Passport">Passport</option>
+              </select>
+              <div class="err" id="idType_err"></div>
+            </div>
+
+            <div class="field span2">
+              <label>ID Number <span class="req">*</span></label>
+              <input type="text" id="idNumber" placeholder="ID number based on selection" />
+              <div class="err" id="idNumber_err"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STAGE 3 -->
+        <div class="stage" id="stage3">
+          <h3>Stage 3: Preferences</h3>
+          <p class="desc">Checkbox min selection + radio required.</p>
+
+          <div class="grid">
+            <div class="field span2">
+              <label>Choose your interests (select at least 2) <span class="req">*</span></label>
+              <div class="checks" id="interestBox">
+                <label><input type="checkbox" value="Tech" /> Tech</label>
+                <label><input type="checkbox" value="Sports" /> Sports</label>
+                <label><input type="checkbox" value="Music" /> Music</label>
+                <label><input type="checkbox" value="Books" /> Books</label>
+                <label><input type="checkbox" value="Gaming" /> Gaming</label>
+              </div>
+              <div class="err" id="interests_err"></div>
+            </div>
+
+            <div class="field span2">
+              <label>Mode of Contact <span class="req">*</span></label>
+              <div class="radios" id="contactMode">
+                <label><input type="radio" name="contact" value="Email" /> Email</label>
+                <label><input type="radio" name="contact" value="Phone" /> Phone</label>
+                <label><input type="radio" name="contact" value="WhatsApp" /> WhatsApp</label>
+              </div>
+              <div class="err" id="contact_err"></div>
+            </div>
+
+            <div class="field span2">
+              <label>Short Bio (10 - 120 chars) <span class="req">*</span></label>
+              <textarea id="bio" rows="4" placeholder="Write something about yourself..."></textarea>
+              <div class="meta">
+                <span class="muted">Character validation is strict.</span>
+                <b id="bioCount">0</b>
+              </div>
+              <div class="err" id="bio_err"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STAGE 4 -->
+        <div class="stage" id="stage4">
+          <h3>Stage 4: Review & Submit</h3>
+          <p class="desc">Verify your entered details. Submission allowed only if all stages are valid ✅</p>
+
+          <div class="review" id="reviewBox"></div>
+
+          <div class="confirm">
+            <label>
+              <input type="checkbox" id="confirmCheck" />
+              I confirm all details are correct <span class="req">*</span>
+            </label>
+            <div class="err" id="confirm_err"></div>
+          </div>
+
+          <div class="final-result" id="finalResult"></div>
+        </div>
+
+        <!-- NAVIGATION -->
+        <div class="nav">
+          <button type="button" class="btn btn-ghost" id="backBtn">← Back</button>
+          <button type="button" class="btn btn-primary" id="nextBtn">Next →</button>
+          <button type="submit" class="btn btn-success" id="submitBtn">Submit ✅</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Exercise 5 • Multi-Stage Workflow Engine • DOM + Validation + Progress</p>
+  </footer>
+
+  <script src="exercise5.js"></script>
+</body>
+</html>
