@@ -1,0 +1,10 @@
+{
+  "products": [
+    { "name": "MacBook Pro", "price": 150000, "category": "Electronics" },
+    { "name": "iPhone 15", "price": 80000, "category": "Electronics" },
+    { "name": "Nike Sneakers", "price": 7000, "category": "Fashion" },
+    { "name": "Samsung TV", "price": 60000, "category": "Electronics" },
+    { "name": "Leather Jacket", "price": 5000, "category": "Fashion" },
+    { "name": "Gaming Mouse", "price": 2500, "category": "Accessories" }
+  ]
+}

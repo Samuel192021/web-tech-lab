@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Premium Username Checker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="background">
+    <div class="card">
+        <h1>Create Account</h1>
+        <p class="subtitle">Choose a unique username</p>
+
+        <form id="registerForm">
+            <div class="input-wrapper">
+                <input type="text" id="username" required placeholder="Enter Username">
+                <span id="statusIcon"></span>
+            </div>
+
+            <div id="feedback"></div>
+            <div class="loader" id="loader"></div>
+
+            <button type="submit" id="submitBtn" disabled>
+                Register
+            </button>
+        </form>
+    </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
