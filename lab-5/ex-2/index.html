@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Elite Library Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <header>
+        <h1>📚 Library Dashboard</h1>
+        <input type="text" id="searchBox" placeholder="Search books...">
+    </header>
+
+    <div class="stats">
+        <div class="card">
+            <h3>Total Books</h3>
+            <p id="totalBooks">0</p>
+        </div>
+        <div class="card available">
+            <h3>Available</h3>
+            <p id="availableBooks">0</p>
+        </div>
+        <div class="card borrowed">
+            <h3>Borrowed</h3>
+            <p id="borrowedBooks">0</p>
+        </div>
+    </div>
+
+    <div class="form-section">
+        <form id="bookForm">
+            <input type="text" id="bookId" placeholder="Book ID" required>
+            <input type="text" id="title" placeholder="Title" required>
+            <input type="text" id="author" placeholder="Author" required>
+            <select id="status">
+                <option value="Available">Available</option>
+                <option value="Borrowed">Borrowed</option>
+            </select>
+            <button type="submit">Add Book</button>
+        </form>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="bookTable"></tbody>
+    </table>
+
+</div>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

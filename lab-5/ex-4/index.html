@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enterprise Inventory System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="dashboard">
+
+    <header>
+        <h1>📦 Product Inventory</h1>
+        <input type="text" id="categorySearch" placeholder="Search by category...">
+    </header>
+
+    <div class="stats">
+        <div class="card">
+            <h3>Total Products</h3>
+            <p id="totalProducts">0</p>
+        </div>
+        <div class="card">
+            <h3>Total Inventory Value</h3>
+            <p id="totalValue">₹0</p>
+        </div>
+        <div class="card low-stock">
+            <h3>Low Stock Items</h3>
+            <p id="lowStockCount">0</p>
+        </div>
+    </div>
+
+    <form id="productForm">
+        <input type="text" id="productId" placeholder="Product ID" required>
+        <input type="text" id="name" placeholder="Name" required>
+        <input type="text" id="category" placeholder="Category" required>
+        <input type="number" id="price" placeholder="Price" required>
+        <input type="number" id="stock" placeholder="Stock Quantity" required>
+        <button type="submit">Add Product</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>Stock</th>
+                <th>Value</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="inventoryTable"></tbody>
+    </table>
+
+</div>
+
+<div id="toast"></div>
+
+<script src="script.js"></script>
+</body>
+</html>

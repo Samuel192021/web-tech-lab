@@ -1,0 +1,7 @@
+{
+  "products": [
+    { "id": "P101", "name": "Laptop", "category": "Electronics", "price": 60000, "stock": 5 },
+    { "id": "P102", "name": "Headphones", "category": "Electronics", "price": 3000, "stock": 15 },
+    { "id": "P103", "name": "Shoes", "category": "Fashion", "price": 2500, "stock": 3 }
+  ]
+}
