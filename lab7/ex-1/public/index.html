@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Student Notes Manager</title>
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+</head>
+
+<body>
+
+<div class="main">
+
+<h1 class="title">
+<i class="fa-solid fa-book-open"></i>
+Student Notes Manager
+</h1>
+
+<div class="note-form">
+
+<h2>Add New Note</h2>
+
+<input type="text" id="title" placeholder="Title">
+
+<input type="text" id="subject" placeholder="Subject">
+
+<textarea id="description" placeholder="Description"></textarea>
+
+<button onclick="addNote()">
+<i class="fa-solid fa-plus"></i>
+Add Note
+</button>
+
+</div>
+
+<h2 class="notes-title">Your Notes</h2>
+
+<div id="notes" class="notes-container"></div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
