@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Marks Calculator</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Animated background grid -->
+  <div class="bg-grid"></div>
+  <div class="bg-glow"></div>
+
+  <main class="container">
+
+    <header class="hero">
+      <div class="hero-label">ES6 · JavaScript · Exercise 1</div>
+      <h1 class="hero-title">Student<br><span class="accent">Marks</span><br>Calculator</h1>
+      <p class="hero-sub">Powered by Arrow Functions &amp; Template Literals</p>
+    </header>
+
+    <!-- INPUT CARD -->
+    <section class="card input-card" id="inputCard">
+      <div class="card-tag">INPUT</div>
+
+      <div class="field-group">
+        <label class="field-label" for="studentName">Student Name</label>
+        <div class="input-wrapper">
+          <span class="input-icon">◈</span>
+          <input type="text" id="studentName" class="field-input" placeholder="e.g. Arun" value="Arun" autocomplete="off" />
+        </div>
+      </div>
+
+      <div class="marks-row">
+        <div class="field-group">
+          <label class="field-label" for="mark1">Subject 1</label>
+          <div class="input-wrapper">
+            <input type="number" id="mark1" class="field-input mark-input" placeholder="0–100" value="85" min="0" max="100" />
+            <span class="input-suffix">/100</span>
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="mark2">Subject 2</label>
+          <div class="input-wrapper">
+            <input type="number" id="mark2" class="field-input mark-input" placeholder="0–100" value="90" min="0" max="100" />
+            <span class="input-suffix">/100</span>
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="mark3">Subject 3</label>
+          <div class="input-wrapper">
+            <input type="number" id="mark3" class="field-input mark-input" placeholder="0–100" value="88" min="0" max="100" />
+            <span class="input-suffix">/100</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="calc-btn" id="calcBtn">
+        <span class="btn-text">Calculate</span>
+        <span class="btn-arrow">→</span>
+      </button>
+    </section>
+
+    <!-- RESULT CARD -->
+    <section class="card result-card hidden" id="resultCard">
+      <div class="card-tag">OUTPUT</div>
+
+      <div class="student-badge" id="studentBadge">
+        <div class="badge-avatar" id="badgeAvatar">A</div>
+        <div class="badge-info">
+          <div class="badge-label">Student Name</div>
+          <div class="badge-name" id="badgeName">Arun</div>
+        </div>
+        <div class="badge-grade" id="badgeGrade">A</div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-block">
+          <div class="stat-value" id="totalMarks">—</div>
+          <div class="stat-label">Total Marks</div>
+          <div class="stat-sub" id="totalSub">out of 300</div>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat-block">
+          <div class="stat-value highlight" id="avgMarks">—</div>
+          <div class="stat-label">Average Marks</div>
+          <div class="stat-sub">out of 100</div>
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="progress-section">
+        <div class="progress-label">
+          <span>Performance</span>
+          <span id="progressPct">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+        <div class="progress-ticks">
+          <span>0</span><span>25</span><span>50</span><span>75</span><span>100</span>
+        </div>
+      </div>
+
+      <!-- Console output block -->
+      <div class="console-block">
+        <div class="console-header">
+          <span class="console-dot red"></span>
+          <span class="console-dot yellow"></span>
+          <span class="console-dot green"></span>
+          <span class="console-title">console output</span>
+        </div>
+        <div class="console-body" id="consoleBody">
+          <div class="console-line" id="line1"></div>
+          <div class="console-line" id="line2"></div>
+          <div class="console-line" id="line3"></div>
+        </div>
+      </div>
+
+      <button class="reset-btn" id="resetBtn">← Reset</button>
+    </section>
+
+    <!-- CODE SNIPPET -->
+    <section class="card code-card">
+      <div class="card-tag">ES6 CODE</div>
+      <pre class="code-block"><code><span class="kw">let</span> studentName = <span class="str">"Arun"</span>;
+<span class="kw">let</span> mark1 = <span class="num">85</span>, mark2 = <span class="num">90</span>, mark3 = <span class="num">88</span>;
+
+<span class="kw">const</span> calculateAverage = (m1, m2, m3) <span class="arr">=></span> {
+  <span class="kw">return</span> (m1 + m2 + m3) / <span class="num">3</span>;
+};
+
+<span class="kw">let</span> total = mark1 + mark2 + mark3;
+<span class="kw">let</span> average = calculateAverage(mark1, mark2, mark3);
+
+console.<span class="fn">log</span>(<span class="str">`Student Name: <span class="tpl">${studentName}</span>`</span>);
+console.<span class="fn">log</span>(<span class="str">`Total Marks:  <span class="tpl">${total}</span>`</span>);
+console.<span class="fn">log</span>(<span class="str">`Average Marks: <span class="tpl">${average.toFixed(2)}</span>`</span>);</code></pre>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Course Enrollment — ES6 Classes & Promises</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Special+Elite&family=Source+Code+Pro:wght@400;600&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Paper texture overlay -->
+  <div class="paper-overlay"></div>
+
+  <main class="container">
+
+    <!-- HEADER MASTHEAD -->
+    <header class="masthead">
+      <div class="masthead-rule top-rule"></div>
+      <div class="masthead-inner">
+        <div class="university-line">VIT-AP University · School of Computing · Lab Sheet 8</div>
+        <h1 class="masthead-title">Course<br>Enrollment<br>System</h1>
+        <div class="masthead-sub">ES6 Classes &amp; Promises · Exercise 3</div>
+      </div>
+      <div class="masthead-rule bot-rule"></div>
+      <div class="stamp-box" id="statusStamp">PENDING</div>
+    </header>
+
+    <!-- COURSE FORM CARD -->
+    <section class="filing-card" id="formCard">
+      <div class="card-corner tl"></div>
+      <div class="card-corner tr"></div>
+      <div class="card-corner bl"></div>
+      <div class="card-corner br"></div>
+
+      <div class="card-header">
+        <span class="card-tag">NEW COURSE REGISTRATION</span>
+        <span class="card-num">Form ES6-C01</span>
+      </div>
+
+      <div class="form-body">
+
+        <div class="form-row">
+          <div class="form-col">
+            <label class="field-label">Course Name</label>
+            <input type="text" class="field-input" id="courseName" value="Web Technologies" placeholder="e.g. Web Technologies" />
+          </div>
+          <div class="form-col">
+            <label class="field-label">Instructor</label>
+            <input type="text" class="field-input" id="instructor" value="Dr. Kumar" placeholder="e.g. Dr. Kumar" />
+          </div>
+        </div>
+
+        <div class="form-row three-col">
+          <div class="form-col">
+            <label class="field-label">Total Seats</label>
+            <input type="number" class="field-input" id="totalSeats" value="30" min="1" max="200" />
+          </div>
+          <div class="form-col">
+            <label class="field-label">Seats Filled</label>
+            <input type="number" class="field-input" id="seatsFilled" value="12" min="0" max="200" />
+          </div>
+          <div class="form-col">
+            <label class="field-label">Credits</label>
+            <select class="field-input field-select" id="credits">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3" selected>3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Seat availability toggle -->
+        <div class="toggle-row">
+          <label class="toggle-label">Override: Force course full?</label>
+          <label class="toggle-switch">
+            <input type="checkbox" id="forceFull" />
+            <span class="toggle-track">
+              <span class="toggle-thumb"></span>
+            </span>
+          </label>
+          <span class="toggle-hint" id="toggleHint">Seats available</span>
+        </div>
+
+        <button class="enroll-btn" id="enrollBtn">
+          <span class="btn-icon">✦</span>
+          <span>Enroll in Course</span>
+          <span class="btn-icon">✦</span>
+        </button>
+
+      </div>
+    </section>
+
+    <!-- RESULT SECTION -->
+    <section id="resultSection" class="hidden">
+
+      <!-- Course Details Card -->
+      <div class="result-card details-card anim-in" style="--d:.02s">
+        <div class="rc-label">STEP 1 — course.displayCourse()</div>
+        <div class="course-details-block" id="courseDetailsBlock">
+          <!-- filled by JS -->
+        </div>
+        <div class="mini-console" id="miniConsole1">
+          <!-- filled by JS -->
+        </div>
+      </div>
+
+      <!-- Promise Flow Card -->
+      <div class="result-card promise-card anim-in" style="--d:.12s">
+        <div class="rc-label">STEP 2 — enrollCourse Promise</div>
+
+        <div class="promise-pipeline" id="promisePipeline">
+          <div class="pp-node" id="ppCreate">
+            <div class="pp-icon">⬡</div>
+            <div class="pp-title">new Promise()</div>
+            <div class="pp-sub">Created</div>
+          </div>
+          <div class="pp-arrow" id="ppArrow1">——▶</div>
+          <div class="pp-node" id="ppCheck">
+            <div class="pp-icon">?</div>
+            <div class="pp-title">seatsAvailable</div>
+            <div class="pp-sub" id="ppCheckSub">Checking…</div>
+          </div>
+          <div class="pp-arrow" id="ppArrow2">——▶</div>
+          <div class="pp-node outcome-node" id="ppOutcome">
+            <div class="pp-icon" id="ppOutcomeIcon">⏳</div>
+            <div class="pp-title" id="ppOutcomeTitle">Pending</div>
+            <div class="pp-sub" id="ppOutcomeSub">.then / .catch</div>
+          </div>
+        </div>
+
+        <div class="mini-console" id="miniConsole2">
+          <!-- filled by JS -->
+        </div>
+      </div>
+
+      <!-- Result Banner -->
+      <div class="result-banner anim-in" id="resultBanner" style="--d:.22s">
+        <!-- filled by JS -->
+      </div>
+
+      <!-- Seat Meter -->
+      <div class="result-card seat-card anim-in" style="--d:.30s" id="seatCard">
+        <!-- filled by JS -->
+      </div>
+
+      <!-- Code Block -->
+      <div class="result-card code-card anim-in" style="--d:.38s">
+        <div class="rc-label">ES6 SOURCE CODE</div>
+        <pre class="code-pre" id="codeBlock"><!-- filled by JS --></pre>
+      </div>
+
+      <button class="back-btn" id="backBtn">← Back to Form</button>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Object — ES6 Destructuring & Spread</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Lato:wght@300;400;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="blob blob-3"></div>
+
+  <main class="container">
+
+    <header class="page-header">
+      <div class="lab-badge">VIT-AP · Lab Sheet 8 · ES6 Basics</div>
+      <h1 class="page-title">Object <span class="grad-text">Destructuring</span><br>&amp; Spread Operator</h1>
+      <p class="page-desc">Define a student object · extract with destructuring · extend with spread</p>
+    </header>
+
+    <!-- STEP 1 -->
+    <section class="glass-card" id="formSection">
+      <div class="step-pill">Step 1 — Define Student Object</div>
+
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="sid">Student ID</label>
+          <input type="number" id="sid" value="101" placeholder="e.g. 101" />
+        </div>
+        <div class="form-field">
+          <label for="sname">Name</label>
+          <input type="text" id="sname" value="Priya" placeholder="e.g. Priya" />
+        </div>
+        <div class="form-field">
+          <label for="sdept">Department</label>
+          <select id="sdept">
+            <option value="CSE" selected>CSE</option>
+            <option value="ECE">ECE</option>
+            <option value="EEE">EEE</option>
+            <option value="MECH">MECH</option>
+            <option value="CIVIL">CIVIL</option>
+            <option value="IT">IT</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="smarks">Marks <span class="label-sub">(0–100)</span></label>
+          <div class="marks-wrap">
+            <input type="number" id="smarks" value="92" min="0" max="100" placeholder="0–100" />
+            <span class="marks-badge" id="liveGrade">A+</span>
+          </div>
+        </div>
+      </div>
+
+      <button class="run-btn" id="runBtn">
+        <span>Run Program</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      </button>
+    </section>
+
+    <!-- OUTPUT -->
+    <section id="outputSection" class="output-section hidden">
+
+      <!-- Destructuring card -->
+      <div class="glass-card anim-card" style="--delay:.05s">
+        <div class="step-pill step-green">Step 2 — Object Destructuring</div>
+        <div class="obj-display" id="originalObjDisplay"></div>
+        <div class="arrow-row">
+          <div class="arrow-label">const { id, name, department, marks } = student</div>
+          <div class="arrow-line"><span class="arrow-head">▼</span></div>
+        </div>
+        <div class="destructure-row" id="destructureRow"></div>
+        <div class="console-block">
+          <div class="console-bar">
+            <span class="cdot r"></span><span class="cdot y"></span><span class="cdot g"></span>
+            <span class="ctitle">console.log(id, name, department, marks)</span>
+          </div>
+          <div class="console-out" id="consoleOut1"></div>
+        </div>
+      </div>
+
+      <!-- Spread card -->
+      <div class="glass-card anim-card" style="--delay:.15s">
+        <div class="step-pill step-blue">Step 3 — Spread Operator</div>
+        <div class="spread-visual">
+          <div class="spread-source">
+            <div class="sv-label">student</div>
+            <div class="sv-box" id="svSourceBox"></div>
+          </div>
+          <div class="spread-plus">
+            <div class="plus-circle">+</div>
+            <div class="plus-label">grade property</div>
+          </div>
+          <div class="spread-result">
+            <div class="sv-label sv-new">updatedStudent</div>
+            <div class="sv-box sv-box-new" id="svResultBox"></div>
+          </div>
+        </div>
+        <div class="console-block">
+          <div class="console-bar">
+            <span class="cdot r"></span><span class="cdot y"></span><span class="cdot g"></span>
+            <span class="ctitle">console.log(updatedStudent)</span>
+          </div>
+          <div class="console-out" id="consoleOut2"></div>
+        </div>
+      </div>
+
+      <!-- Grade showcase -->
+      <div class="glass-card anim-card grade-showcase" style="--delay:.25s" id="gradeShowcase"></div>
+
+      <!-- Code snippet -->
+      <div class="glass-card anim-card code-glass" style="--delay:.35s">
+        <div class="step-pill step-mono">ES6 Source Code</div>
+        <pre class="code-pre" id="codeSnippet"></pre>
+      </div>
+
+      <button class="reset-btn" id="resetBtn">↩ Reset</button>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
